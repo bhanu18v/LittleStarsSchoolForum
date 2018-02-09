@@ -1,0 +1,122 @@
+﻿@model SchoolForum.Models.GroupedUserViewModel
+
+
+@{
+    ViewBag.Title = "UserList";
+}
+
+<h2>User List</h2>
+
+
+<hr />
+
+
+@*<div class="form-group col-lg-offset-8 ">
+    <div class="input-group">
+
+        @using (Html.BeginForm())
+        {
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <span class="form-control">
+
+                <input type="search" name="searchString" placeholder="Search by FirstName" />
+
+                <input type="submit" value="Search" class="btn btn-info" />
+
+            </span>
+        }
+
+    </div>
+</div>*@
+                 @*<div class="row">*@
+        <h4>TEACHER</h4>
+
+        <table class="table table-striped table-bordered">
+
+            <tr>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    Class Name
+                </th>
+                <th>
+                    Role Name
+                </th>
+            </tr>
+            @foreach (var item in Model.Teachers)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+
+        <h4>STUDENTS </h4>
+
+        <table class="table table-striped table-bordered">
+
+            <tr>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    Class Name
+                </th>
+                @*<th>
+                        Class Name
+                    </th>*@
+                <th>
+                    Role Name
+                </th>
+
+            </tr>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleName)
+                    </td>
+                </tr>
+            }
+        </table>
+
+
+
+
+
+
+
+        @*@foreach (var user in Model.Students)
+            {
+                <p>
+                    <strong>
+                        @user.FullName <br />
+                        @user.Email<br />
+                        @user.RoleName
+                    </strong>
+                </p>
+            }*@
+        @*</div>*@

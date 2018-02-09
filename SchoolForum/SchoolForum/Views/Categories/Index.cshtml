@@ -1,0 +1,149 @@
+﻿@model IEnumerable<SchoolForum.Models.Category>
+  
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>LIST OF CATEGORIES</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@if (User.IsInRole("Teacher"))
+{
+    <div class="col-md-7">
+
+        <table class="table">
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th> </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Post Message", "Create", "Messages", new { id = item.Id }, null) <span>|</span>
+
+                        @Html.ActionLink("View", "Index", "Messages", new { id = item.Id },null) <span>|</span>
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <span>|</span>
+
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) <span>|</span>
+
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="col-md-4 col-lg-offset-1">
+
+        @*<div class="thumbnail">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+
+                        <h3 class="panel-title">Activity Log</h3>
+
+                    </div>
+
+                </div>
+
+            </div>*@
+
+
+
+        @*<div class="thumbnail">*@
+
+        <ul>
+
+            <li class="list-group-item">
+
+                @Html.ActionLink("List of Users", "UserList", "Account")
+
+            </li>
+            <li class="list-group-item">
+
+                @Html.ActionLink("Register New User", "Register", "Account")
+
+            </li>
+            <li class="list-group-item">
+
+                @Html.ActionLink("Create New Category", "Create")
+
+            </li>
+            <li class="list-group-item">
+
+                @Html.ActionLink("Create New Class", "Create", "Classes")
+
+            </li>
+
+            @*<li class="list-group-item"><a href="http://google.com"> Second Link</a><span></span></li>*@
+            @*<li class="list-group-item">@Html.ActionLink("Register", "Register", "Account")</li>*@
+
+        </ul>
+
+    </div>
+
+
+}
+@if (User.IsInRole("Student"))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th> </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Post Message", "Create", "Messages", new { id = item.Id }, null) <span>|</span>
+                                       
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SchoolForum.Models.MessageRepliesVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Replies to message with the title : @ViewBag.MesTitle </h2>
+
+<p>
+
+    @*@Html.DisplayFor(modelItem => modelItem.MessageTitle)*@
+    @* @Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyPostedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplyDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplyPostedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplyDateTime)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ReplyId }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.ReplyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReplyId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    <h4>back</h4>
+</p>
+
+<a href="javascript:void(0);" onclick="history.go(-1);">Back to replies</a>
+
+<a href="javascript:void(0);" id="backLink">Back</a>
+
+<script type="text/javascript">
+    $(document).on('click', '#backLink', function () {
+        history.go(-2);
+    });
+</script>
+
